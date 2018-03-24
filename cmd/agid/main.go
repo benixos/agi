@@ -7,7 +7,8 @@ import(
 	"os/signal"
 	"github.com/coreos/go-systemd/daemon"
 
-	"github.com/dlockamy/agi/kits/app"
+//	"github.com/benixos/agi/kits/app"
+	"github.com/benixos/agi/kits/support"
 )
 
 func main() {	
@@ -21,8 +22,8 @@ func main() {
             os.Exit(1)
         }()
 
-	router := agi.NewRouter()
-
+	router := support.NewRouter()
+	log.Fatal(http.ListenAndServe("0.0.0.0:7018", router))
 	daemon.SdNotify(false, "READY=1") 
 }
 
