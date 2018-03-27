@@ -14,20 +14,11 @@ MY_DEPS_IN := $(MY_DEPS)
 $(warning MY_OBJS = $(MY_OBJS))
 
 # extract the different source types out of the list
-$(warning MY_SRCS_IN = $(MY_SRCS_IN))
+#$(warning MY_SRCS_IN = $(MY_SRCS_IN))
 
-#$(MY_TARGET_IN): MY_LDFLAGS_IN:=$(MY_LDFLAGS_IN)
-#$(MY_TARGET_IN): MY_LIBS_IN:=$(MY_LIBS_IN)
-#$(MY_TARGET_IN): MY_LIBPATHS_IN:=$(MY_LIBPATHS_IN)
-#$(MY_TARGET_IN): _TEMP_OBJS:=$(_TEMP_OBJS)
-$(MY_TARGET_IN):: $(_TEMP_OBJS) $(MY_DEPS_IN)
-	@mkdir -p $(MY_TARGETDIR_IN)
-	@echo pulling needed go deps
-	@go get $(MY_GO_DEPS)
+$(MY_TARGET_IN)::
 	@echo building cmd: $@
-	@echo $(MY_GO_SRCS)
-	@go build cmd/chaind/$(MY_GO_SRCS)
-#	@$(CC) -L $(LIBGCC_PATH) -L $(LIBS_BUILD_DIR) $(MY_LIBPATHS_IN) -o $@ $(_TEMP_OBJS) $(MY_LIBS_IN) $(LIBGCC) 
+	@go build -o $@ ./$(MY_SRCDIR_IN) 
 
 MY_TARGET :=
 MY_TARGETDIR :=
