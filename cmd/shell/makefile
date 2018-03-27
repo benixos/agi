@@ -15,5 +15,4 @@ MY_LIBPATHS :=
 MY_DEPS :=
 
 include make/app.mk
-
 endif

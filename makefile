@@ -9,7 +9,6 @@ TOOLS =
 ALL_OBJS =
 
 FINAL := $(call TOBUILDDIR, final)
-#$(warning FINAL = $(FINAL))
 
 final: $(FINAL)
 
@@ -24,6 +23,8 @@ include kits/makefile
 include lib/makefile
 include test/makefile
 include vendor/makefile
+
+agid: $(AGID)
 
 apps: $(APPS)
 
