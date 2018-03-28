@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="utf-8">
+    <title>Silver Iodide</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script>
+	function main() { 
+
+	}
+    </script>
+    <link rel="stylesheet" href="./lib/bootstrap/bootstrap.css">
+
+<!--
+    <script src="./lib/jquery-1.11.2.min.js"></script> 
+
+    <script src="./lib/bootstrap/bootstrap.min.js"></script>
+    <script src="./lib/strophe/strophe.js"></script> 
+-->
+    <script src="./lib/agi.js"></script>
+
+
+<!-- Loading default channels -->
+    <script src="./lib/plugins/channels/domglue.js"></script>
+
+<!-- Let's load some default filesystems to get things started -->
+   <script src="./rootfs.ini"></script>
+
+   <script src="./lib/plugins/filesystems/procfs.js"></script>
+   <script src="./lib/plugins/filesystems/rootfs.js"></script>
+    <script src="./lib/plugins/filesystems/screenfs.js"></script>
+    <script src="./lib/plugins/filesystems/simplefs.js"></script>
+    <script src="./lib/plugins/filesystems/stdout.js"></script>
+    <script src="./lib/plugins/filesystems/stdiofs.js"></script>
+    <script src="./lib/plugins/filesystems/tickfs.js"></script>
+    <script src="./lib/plugins/filesystems/winfs.js"></script>
+
+<!-- Load default bin utilities -->
+    <script src="./bin/glue.js"></script>
+    <script src="./bin/cat.js"></script>
+    <script src="./bin/exec.js"></script>
+    <script src="./bin/fsdump.js"></script>
+    <script src="./bin/image.js"></script>
+    <script src="./bin/login.js"></script>
+    <script src="./bin/ls.js"></script>
+    <script src="./bin/mkdir.js"></script>
+    <script src="./bin/mount.js"></script>
+    <script src="./bin/shell.js"></script>
+    <script src="./bin/stat.js"></script>
+    <script src="./bin/write.js"></script>
+
+<!-- Now the defualt applications -->
+    <script type="application/javascript">
+    
+
+var consoleDiv;
+var UserName = "";
+var currentDir = "/home/";
+var console = {};
+var loginAttempt = 0;
+var isLogin = 0;
+var consoleVersion = "0.3";
+var consoleBanner = "AgI Console. ver"+consoleVersion;
+var consoleWelcome = "Welcome! Type \"help\" for commands";
+var shell = 0;
+console.buffer = "";
+console.currentLine = "";
+
+console.init = function()
+{
+    isLogin = 1;
+    consoleDiv = document.getElementById("cmd");
+
+    console.printf(consoleBanner+"<br>"+consoleWelcome+"<br>");
+ 
+    var count = 0;
+
+    while(count < cmdList.length-1) {
+        agi.write("/bin/"+cmdList[count].appName,5,cmdList[count]);   
+        count++;
+    }
+    
+    count = 0;
+     while(count < cmdList.length-1) {
+        if( cmdList[count].appName === "shell"  ) {
+            shell = cmdList[count];
+            shell.main();
+            break;
+        }
+         else
+             count++;
+    }   
+};
+
+console.input = function(keyCode)
+{
+    if(shell.running)
+    {
+        shell.input(keyCode);
+    }
+    else if(keyCode == 13)
+    {
+        console.buffer = console.buffer + "<br>";
+        return;
+    }
+    else
+    {
+        console.printf(String.fromCharCode(keyCode) );
+        console.currentLine = console.currentLine + String.fromCharCode(keyCode);
+    }
+};
+
+console.printf = function(string)
+{
+    console.buffer = console.buffer + string;
+    stdOut = stdOut + consoleDiv;
+    
+    bufferfile.data = bufferfile.data + string;
+        
+    if(consoleDiv !== 0) {
+        consoleDiv.innerHTML = console.buffer;
+    }
+};
+
+console.toggle = function() {
+};
+
+boot = function() {     
+    agi.root = new FileNode("/", writeFlags.CREATEDIR);
+    agi.mount(0,"rootfs","/","");
+    agi.write("/bin", writeFlags.CREATEDIR, "1", 0, 0);
+    agi.write("/local",writeFlags.CREATEDIR,"1", 0, 0);
+    agi.write("/local/dev", writeFlags.CREATEDIR, "1", 0, 0);
+    agi.mount(0,"stdout","/local/dev/stdout","");   
+    agi.write("/local/dev/message", writeFlags.CREATEDIR, "1", 0, 0);
+    agi.write("/remote", writeFlags.CREATEDIR, "1", 0, 0);
+
+    console.init();   
+
+    main();
+}
+    </script>
+</head>
+    
+<body style="width:980px;height:700px;background:black;font:white;overflow:scrollable" onload="boot()">
+    <div id="cmd" >Loading Silver Iodine User Shell </div>
+</body>
+</html>
+
