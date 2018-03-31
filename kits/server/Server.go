@@ -18,6 +18,11 @@ type Server struct {
 	name string
 }
 
+func (s *Server) AttachPipe(pipe support.Pipe ){
+	http.HandleFunc("/ws", pipe.HandleConnection)
+	go pipe.HandleMessages()
+}
+
 func (s *Server) Run() {
         sigs := make(chan os.Signal, 1)
         signal.Notify(sigs)
@@ -29,8 +34,15 @@ func (s *Server) Run() {
             os.Exit(1)
         }()
 
-        router := support.NewRouter()
-        log.Fatal(http.ListenAndServe("0.0.0.0:7018", router))
+	fs := http.FileServer(http.Dir("./plugins/pipes/websocket/public"))
+	http.Handle("/", fs)
+
+        log.Println("http server started on :8000")
+        err := http.ListenAndServe(":8000", nil)
+        if err != nil {
+               log.Fatal("ListenAndServe: ", err)
+        }
+
         daemon.SdNotify(false, "READY=1") 
 }
 
