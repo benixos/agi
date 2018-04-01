@@ -18,8 +18,8 @@ type Server struct {
 	name string
 }
 
-func (s *Server) AttachPipe(pipe support.Pipe ){
-	http.HandleFunc("/ws", pipe.HandleConnection)
+func (s *Server) AttachPipe(path string, pipe support.Pipe ){
+	http.HandleFunc(path, pipe.HandleConnection)
 	go pipe.HandleMessages()
 }
 

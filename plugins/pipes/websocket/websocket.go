@@ -72,3 +72,8 @@ func (wp WebsocketPipe) HandleMessages() {
 		}
 	}
 }
+
+func  (wp WebsocketPipe) SendMessage(target string, message message.Message) {
+
+
+}
