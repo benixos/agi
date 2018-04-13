@@ -34,6 +34,8 @@ kits: $(KITS)
 
 libs: $(LIBS)
 
+libclientjs:$(LIBCLIENTJS)
+
 cmds: $(CMD)
 
 clean: $(CLEAN)
