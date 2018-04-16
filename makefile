@@ -21,6 +21,7 @@ include docs/makefile
 include examples/makefile
 include kits/makefile
 include lib/makefile
+include plugins/makefile
 include test/makefile
 include vendor/makefile
 
@@ -35,6 +36,10 @@ kits: $(KITS)
 libs: $(LIBS)
 
 libclientjs:$(LIBCLIENTJS)
+
+fixtures:$(FIXTURES)
+
+pipes:$(PIPES)
 
 cmds: $(CMD)
 
