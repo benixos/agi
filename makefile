@@ -25,15 +25,17 @@ include plugins/makefile
 include test/makefile
 include vendor/makefile
 
-agid: $(AGID)
+agid:$(AGID)
 
-apps: $(APPS)
+all:$(ALL)
 
-examples: $(EXAMPLES)
+apps:$(APPS)
 
-kits: $(KITS)
+examples:$(EXAMPLES)
 
-libs: $(LIBS)
+kits:$(KITS)
+
+libs:$(LIBS)
 
 libclientjs:$(LIBCLIENTJS)
 
@@ -41,7 +43,7 @@ fixtures:$(FIXTURES)
 
 pipes:$(PIPES)
 
-cmds: $(CMD)
+cmds:$(CMD)
 
 clean: $(CLEAN)
 	rm -f $(ALL_OBJS)

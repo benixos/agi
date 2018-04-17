@@ -1,5 +1,5 @@
-MY_TARGET        := $(LIBS_RELEASE_DIR)/libhttp.so
-MY_STATIC_TARGET := $(LIBS_RELEASE_DIR)/libhttp.a
+MY_TARGET        := $(LIBS_RELEASE_DIR)/libhttp.a
+#MY_STATIC_TARGET := $(LIBS_RELEASE_DIR)/libhttp.a
 MY_TARGETDIR     := $(LIBS_DIR)/libhttp
 
 ifeq ($(call FINDINLIST,$(MY_TARGET),$(ALL)),1)
