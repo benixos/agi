@@ -1,5 +1,5 @@
-MY_TARGET        := $(LIBS_RELEASE_DIR)/libchain.so
-MY_STATIC_TARGET := $(LIBS_RELEASE_DIR)/libchain.a
+MY_TARGET        := $(LIBS_RELEASE_DIR)/libchain.a
+#MY_STATIC_TARGET := $(LIBS_RELEASE_DIR)/libchain.a
 MY_TARGETDIR     := $(LIBS_BUILD_DIR)/libchain
 MY_SRCDIR        := $(LIBS_DIR)/libchain
 

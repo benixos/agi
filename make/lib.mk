@@ -9,24 +9,24 @@ MY_CPPFLAGS_IN := $(MY_CPPFLAGS)
 MY_INCLUDES_IN := $(MY_INCLUDES)
 MY_LINKSCRIPT_IN := $(MY_LINKSCRIPT)
 
-$(warning MY_OBJS = $(MY_OBJS))
+#$(warning MY_OBJS = $(MY_OBJS))
 
 #extract the different source types out of the list
-$(warning MY_SRCS_IN = $(MY_SRCS_IN))
+#$(warning MY_SRCS_IN = $(MY_SRCS_IN))
 MY_CPPSRCS_IN := $(filter %.cpp,$(MY_SRCS_IN))
 MY_CSRCS_IN := $(filter %.c,$(MY_SRCS_IN))
 MY_ASMSRCS_IN := $(filter %.S,$(MY_SRCS_IN))
 
-$(warning MY_CPPSRCS_IN = $(MY_CPPSRCS_IN))
-$(warning MY_CSRCS_IN = $(MY_CSRCS_IN))
-$(warning MY_ASMSRCS_IN = $(MY_ASMSRCS_IN))
+#$(warning MY_CPPSRCS_IN = $(MY_CPPSRCS_IN))
+#$(warning MY_CSRCS_IN = $(MY_CSRCS_IN))
+#$(warning MY_ASMSRCS_IN = $(MY_ASMSRCS_IN))
 
 # build a list of objects
 MY_CPPOBJS_IN := $(addprefix $(MY_TARGETDIR_IN)/,$(patsubst %.cpp,%.o,$(MY_CPPSRCS_IN)))
 MY_COBJS_IN := $(addprefix $(MY_TARGETDIR_IN)/,$(patsubst %.c,%.o,$(MY_CSRCS_IN)))
 MY_ASMOBJS_IN := $(addprefix $(MY_TARGETDIR_IN)/,$(patsubst %.S,%.o,$(MY_ASMSRCS_IN)))
 _TEMP_OBJS := $(MY_CPPOBJS_IN) $(MY_COBJS_IN) $(MY_ASMOBJS_IN)
-$(warning _TEMP_OBJS = $(_TEMP_OBJS))
+#$(warning _TEMP_OBJS = $(_TEMP_OBJS))
 
 # add to the global object list
 ALL_OBJS := $(ALL_OBJS) $(_TEMP_OBJS)
@@ -40,7 +40,7 @@ $(MY_TARGET_IN): MY_TARGETDIR_IN:=$(MY_TARGETDIR_IN)
 $(MY_TARGET_IN): $(_TEMP_OBJS)
 	@$(MKDIR)
 	@mkdir -p $(MY_TARGETDIR_IN)
-	@echo linking library $@
+	@echo building library $@
 	@$(LD) $(GLOBAL_LDFLAGS) -shared -soname $(notdir $(MY_TARGET_IN)) -o $@ $^
 endif
 
@@ -51,7 +51,6 @@ $(MY_STATIC_TARGET_IN): $(_TEMP_OBJS)
 	@echo creating static lib $@
 	@$(AR) r $@ $^
 endif
-
 
 include make/compile.mk
 

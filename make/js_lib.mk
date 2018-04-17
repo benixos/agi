@@ -9,7 +9,7 @@ MY_CPPFLAGS_IN := $(MY_CPPFLAGS)
 MY_INCLUDES_IN := $(MY_INCLUDES)
 MY_LINKSCRIPT_IN := $(MY_LINKSCRIPT)
 
-$(warning MY_OBJS = $(MY_OBJS))
+#$(warning MY_OBJS = $(MY_OBJS))
 
 #extract the different source types out of the list
 #$(warning MY_SRCS_IN = $(MY_SRCS_IN))
@@ -26,8 +26,7 @@ $(MY_TARGET_IN): MY_TARGETDIR_IN:=$(MY_TARGETDIR_IN)
 $(MY_TARGET_IN):$(_TEMP_OBJS)
 	@$(MKDIR)
 	@mkdir -p $(MY_TARGETDIR_IN)
-	@echo linking library $@
-#	
+	@echo building library $@
 	@cat $(_TEMP_OBJS) > $@
 endif
 

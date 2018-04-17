@@ -10,19 +10,19 @@ $(MY_COBJS_IN) $(MY_CPPOBJS_IN) $(MY_ASMOBJS_IN): MY_INCLUDES_IN:=$(MY_INCLUDES_
 #empty rule for dependency files, they are built by the compile process
 $(MY_TARGETDIR_IN)/%.d:
 
-$(warning MY_OBJS_IN = $(MY_OBJS_IN))
+#$(warning MY_OBJS_IN = $(MY_OBJS_IN))
 
 $(MY_CPPOBJS_IN): $(MY_TARGETDIR_IN)/%.o: $(MY_SRCDIR_IN)/%.cpp 
 	@$(MKDIR)
-	@echo compiling $<
+#	@echo compiling $<
 	@$(CC) -c $< $(GLOBAL_CPPFLAGS) $(MY_CPPFLAGS_IN) $(MY_INCLUDES_IN) -MD -MT $@ -MF $(@:%o=%d) -o $@
 
 $(MY_COBJS_IN): $(MY_TARGETDIR_IN)/%.o: $(MY_SRCDIR_IN)/%.c
 	@$(MKDIR)
-	@echo compiling $<
+#	@echo compiling $<
 	@$(CC) -c $< $(GLOBAL_CFLAGS) $(MY_CFLAGS_IN) $(MY_INCLUDES_IN) -MD -MT $@ -MF $(@:%o=%d) -o $@
 
 $(MY_ASMOBJS_IN): $(MY_TARGETDIR_IN)/%.o: $(MY_SRCDIR_IN)/%.S
 	@$(MKDIR)
-	@echo assembling $<
+#	@echo assembling $<
 	@$(CC) -c $< $(GLOBAL_ASFLAGS) $(GLOBAL_CFLAGS) $(MY_CFLAGS_IN) $(MY_INCLUDES_IN) -MD -MT $@ -MF $(@:%o=%d) -o $@
