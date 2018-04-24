@@ -9,26 +9,25 @@ MY_CPPFLAGS_IN := $(MY_CPPFLAGS)
 MY_INCLUDES_IN := $(MY_INCLUDES)
 MY_LINKSCRIPT_IN := $(MY_LINKSCRIPT)
 
-$(warning MY_OBJS = $(MY_OBJS))
-
+#$(warning MY_OBJS = $(MY_OBJS))
+ifneq ($(MY_TARGET_IN), ) 
 #extract the different source types out of the list
 $(warning MY_SRCS_IN = $(MY_SRCS_IN))
-MY_JSSRCS_IN := $(MY_SRCS_IN)
 
 # build a list of objects
-MY_JSSRCS_IN := $(addprefix $(MY_SRCDIR_IN)/,$(MY_JSSRCS_IN))
-_TEMP_OBJS := $(MY_JSSRCS_IN)
-$(warning _TEMP_OBJS = $(MY_JSSRCS_IN))
+_TEMP_OBJS := $(addprefix $(MY_SRCDIR_IN)/,$(MY_SRCS_IN))
+_DEST_OBJS := $(addprefix $(MY_TARGETDIR_IN)/,$(MY_SRCS_IN))
+$(warning _TEMP_OBJS = $(_TEMP_OBJS))
+$(warning _DEST_OBJS = $(_DEST_OBJS))
 
-ifneq ($(MY_TARGET_IN), ) 
 $(MY_TARGET_IN): MY_TARGET_IN:=$(MY_TARGET_IN)
 $(MY_TARGET_IN): MY_TARGETDIR_IN:=$(MY_TARGETDIR_IN) 
 $(MY_TARGET_IN):$(_TEMP_OBJS)
 	@$(MKDIR)
 	@mkdir -p $(MY_TARGETDIR_IN)
 	@echo linking library $@
-#	@echo $(MY_JSSRCS_IN)
-	@cat $(_TEMP_OBJS) > $@
+	@echo $(_TEMP_OBJS) > $(_DEST_OBJS)
+	@cp $(_TEMP_OBJS) > $(_DEST_OBJS)
 endif
 
 MY_TARGET :=

@@ -10,7 +10,6 @@ MY_INCLUDES_IN := $(MY_INCLUDES)
 MY_LINKSCRIPT_IN := $(MY_LINKSCRIPT)
 
 #$(warning MY_OBJS = $(MY_OBJS))
-
 #extract the different source types out of the list
 #$(warning MY_SRCS_IN = $(MY_SRCS_IN))
 MY_JSSRCS_IN := $(MY_SRCS_IN)
@@ -37,5 +36,5 @@ MY_TARGETDIR :=
 MY_SRCDIR :=
 MY_SRCS :=
 MY_SRCS_IN :=
-#MY_JSSRCS_IN :=
+MY_JSSRCS_IN :=
 #_TEMP_OBJS :=
