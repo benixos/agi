@@ -11,9 +11,11 @@ MY_SRCS := \
 
 MY_INCLUDES := $(STDINCLUDE)
 MY_CFLAGS := $(USER_CFLAGS)
-MY_LIBS := 
-#MY_LIBPATHS :=
-#MY_DEPS :=
+
+MY_LIBS := \
+	$(LIBCLIENTJS)
+MY_LIBPATHS :=
+
 
 include make/webapp.mk
 endif

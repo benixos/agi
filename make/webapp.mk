@@ -8,26 +8,31 @@ MY_CFLAGS_IN := $(MY_CFLAGS)
 MY_CPPFLAGS_IN := $(MY_CPPFLAGS)
 MY_INCLUDES_IN := $(MY_INCLUDES)
 MY_LINKSCRIPT_IN := $(MY_LINKSCRIPT)
+MY_DEPS_IN := $(MY_DEPS)
+MY_LIBS_IN := $(MY_LIBS)
+MY_LIBPATHS_IN := $(MY_LIBPATHS)
 
 #$(warning MY_OBJS = $(MY_OBJS))
 ifneq ($(MY_TARGET_IN), ) 
 #extract the different source types out of the list
-$(warning MY_SRCS_IN = $(MY_SRCS_IN))
+#$(warning MY_SRCS_IN = $(MY_SRCS_IN))
 
 # build a list of objects
 _TEMP_OBJS := $(addprefix $(MY_SRCDIR_IN)/,$(MY_SRCS_IN))
 _DEST_OBJS := $(addprefix $(MY_TARGETDIR_IN)/,$(MY_SRCS_IN))
-$(warning _TEMP_OBJS = $(_TEMP_OBJS))
-$(warning _DEST_OBJS = $(_DEST_OBJS))
+
+#$(warning _TEMP_OBJS = $(_TEMP_OBJS))
+#$(warning _DEST_OBJS = $(_DEST_OBJS))
 
 $(MY_TARGET_IN): MY_TARGET_IN:=$(MY_TARGET_IN)
 $(MY_TARGET_IN): MY_TARGETDIR_IN:=$(MY_TARGETDIR_IN) 
-$(MY_TARGET_IN):$(_TEMP_OBJS)
+$(MY_TARGET_IN):$(_TEMP_OBJS) $(MY_DEPS_IN)
 	@$(MKDIR)
 	@mkdir -p $(MY_TARGETDIR_IN)
 	@echo linking library $@
 	@echo $(_TEMP_OBJS) > $(_DEST_OBJS)
 	@cp $(_TEMP_OBJS) > $(_DEST_OBJS)
+	#@cp $(MY_LIBS_IN) ./$(MY_TARGETDIR_IN)
 endif
 
 MY_TARGET :=
@@ -40,3 +45,5 @@ MY_CFLAGS :=
 MY_CPPFLAGS :=
 MY_INCLUDES :=
 MY_LINKSCRIPT :=
+MY_LIBS := 
+MY_LIBPATHS :=

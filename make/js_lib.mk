@@ -26,7 +26,7 @@ $(MY_TARGET_IN):$(_TEMP_OBJS)
 	@$(MKDIR)
 	@mkdir -p $(MY_TARGETDIR_IN)
 	@echo building library $@
-	@cat $(_TEMP_OBJS) > $@
+	@cat $^ > $@
 endif
 
 #MY_OBJS :=

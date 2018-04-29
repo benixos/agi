@@ -15,7 +15,7 @@ _TEMP_OBJS := $(MY_GOSRCS_IN)
 
 $(MY_TARGET_IN):$(_TEMP_OBJS)
 	@echo building cmd: $@
-	@go build -o $@ ./cmd/agid 
+	@go build -o $@ $^
 endif
 
 MY_TARGET :=

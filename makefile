@@ -45,6 +45,8 @@ pipes:$(PIPES)
 
 cmds:$(CMD)
 
+webroot:$(WEBROOT)
+
 clean: $(CLEAN)
 	rm -f $(ALL_OBJS)
 	rm -f $(ALL)

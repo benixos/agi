@@ -35,7 +35,7 @@ func (s *Server) Run() {
 		os.Exit(1)
 	}()
 
-	fs := http.FileServer(http.Dir("./build/package.x86_64-pc/bin/webshell/"))
+	fs := http.FileServer(http.Dir("./build/package.x86_64-pc/"))
 	http.Handle("/", fs)
 
 	log.Println("-- http server started on :8000")
