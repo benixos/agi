@@ -4,10 +4,24 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
   <title>AgI WebConsole</title>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="styelsheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
 
   <script>
+	var cmdList = [];
+	var app_list = [];
+
+	var rootfs_ini = [
+		"bin/",
+		"dev/",
+		"etc/",
+		"home/",
+		"lib/",
+		"mnt/",
+		"lib/plugins/",
+		"sbin/",
+		"sys/",
+		"usr/",
+		"var/"];
+
 	main = function() {
 	    agi.root = new FileNode("/", writeFlags.CREATEDIR);
 	    agi.mount(0,"rootfs","/","");
@@ -31,40 +45,13 @@
  </nav>
   <div class="section no-pad-bot" id="index-banner">
     <div id="cmd" >Loading Silver Iodine User Shell </div>		
-   
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
-
-   <script src="./lib/agi.js"></script>
-   <!-- Loading default channels -->
-   <script src="./lib/plugins/channels/domglue.js"></script>
-
-   <!-- Let's load some default filesystems to get things started -->
-   <script src="./rootfs.ini"></script>
-
-   <script src="./lib/plugins/filesystems/procfs.js"></script>
-   <script src="./lib/plugins/filesystems/rootfs.js"></script>
-   <script src="./lib/plugins/filesystems/screenfs.js"></script>
-   <script src="./lib/plugins/filesystems/simplefs.js"></script>
-   <script src="./lib/plugins/filesystems/stdout.js"></script>
-   <script src="./lib/plugins/filesystems/stdiofs.js"></script>
-   <script src="./lib/plugins/filesystems/tickfs.js"></script>
-   <script src="./lib/plugins/filesystems/winfs.js"></script>
-
-   <!-- Load default bin utilities -->
-   <script src="./bin/glue.js"></script>
-   <script src="./bin/cat.js"></script>
-   <script src="./bin/exec.js"></script>
-   <script src="./bin/fsdump.js"></script>
-   <script src="./bin/image.js"></script>
-   <script src="./bin/login.js"></script>
-   <script src="./bin/ls.js"></script>
-   <script src="./bin/mkdir.js"></script>
-   <script src="./bin/mount.js"></script>
-   <script src="./bin/shell.js"></script>
-   <script src="./bin/stat.js"></script>
-   <script src="./bin/write.js"></script>
-
-   <script src="./bin/webshell.js"></script>
+   <script src="./lib/libagi.js"></script>
+   <script src="./plugins/fixtures/proc.js"></script>
+   <script src="./plugins/fixtures/root.js"></script>
+   <script src="./plugins/fixtures/screen.js"></script>
+   <script src="./plugins/fixtures/stdio.js"></script>
+   <script src="./plugins/pipes/websocket.js"></script>
+   <script src="./bin/bin.js"></script>
   </div>
 </body>
 </html>

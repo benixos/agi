@@ -1,5 +1,5 @@
 #cmd makefile
-MY_TARGETDIR := $(CMD_RELEASE_DIR)/bin
+MY_TARGETDIR := $(CMD_RELEASE_DIR)
 MY_TARGET := $(CMD_RELEASE_DIR)/agid
 
 ifeq ($(call FINDINLIST,$(MY_TARGET),$(ALL)),1)

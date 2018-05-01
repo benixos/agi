@@ -32,7 +32,7 @@ $(MY_TARGET_IN):$(_TEMP_OBJS) $(MY_DEPS_IN)
 	@echo linking library $@
 	@echo $(_TEMP_OBJS) > $(_DEST_OBJS)
 	@cp $(_TEMP_OBJS) > $(_DEST_OBJS)
-	#@cp $(MY_LIBS_IN) ./$(MY_TARGETDIR_IN)
+	#@cp $(MY_LIBS_IN) $(MY_TARGETDIR_IN)
 endif
 
 MY_TARGET :=

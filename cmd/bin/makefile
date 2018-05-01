@@ -17,11 +17,8 @@ MY_SRCS := \
 	ls.js\
 	mkdir.js\
 	mount.js\
-	notes.js\
 	shell.js\
 	stat.js\
-	terminal.js\
-	webshell.js\
 	write.js\
 
 #MY_INCLUDES :=

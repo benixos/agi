@@ -1,5 +1,5 @@
 #cmd makefile
-MY_TARGETDIR := $(RELEASE_DIR)/
+MY_TARGETDIR := $(RELEASE_DIR)
 MY_SRCDIR    := $(CMD_DIR)/webroot
 MY_TARGET    := $(RELEASE_DIR)/index.html
 
@@ -7,14 +7,15 @@ ifeq ($(call FINDINLIST,$(MY_TARGET),$(ALL)),1)
 
 MY_SRCS := \
 	index.html\
-	rootfs.ini\
+#	rootfs.ini\
 
 _TEMP_OBJS := $(addprefix $(MY_SRCDIR)/,$(MY_SRCS))
 _DEST_OBJS := $(addprefix $(MY_TARGETDIR)/,$(MY_SRCS))
 
-$(MY_TARGET):
-	@echo $(_TEMP_OBJS) > $(_DEST_OBJS)
-	@cp $(_TEMP_OBJS) > $(_DEST_OBJS)
+$(MY_TARGET): $(_TEMP_OBJS)
+	@$(MKDIR)
+	#@cp $(_TEMP_OBJS)  $(MY_TARGETDIR)
+	@cat $^ > $@
 endif
 
 MY_TARGET :=
