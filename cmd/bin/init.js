@@ -68,6 +68,7 @@ console.printf = function(string)
     console.buffer = console.buffer + string;
     bufferfile.data = bufferfile.data + string;
     stdOut = stdOut + consoleDiv;
+    consoleDiv.innerHTML = console.buffer;
 };
 
 boot = function() {     
