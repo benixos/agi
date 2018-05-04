@@ -1,7 +1,8 @@
 #httpd makefile
 MY_TARGETDIR := $(APPS_BUILD_DIR)/httpd
-MY_SRCDIR := $(APPS_DIR)/httpd
-MY_TARGET :=  $(MY_TARGETDIR)/httpd
+MY_TARGET    := $(APPS_RELEASE_DIR)/httpd
+MY_SRCDIR    := $(APPS_DIR)/httpd
+
 ifeq ($(call FINDINLIST,$(MY_TARGET),$(ALL)),1)
 
 MY_SRCS := \

@@ -32,7 +32,7 @@ int main(int argc, char** argv)
 		}
 	};
     
-	os_init(argc, argv);
+	//os_init(argc, argv);
 
     setupHTTP();
     startHTTP();

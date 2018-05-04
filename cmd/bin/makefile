@@ -1,5 +1,4 @@
 MY_TARGET  :=  $(CMD_RELEASE_DIR)/bin.js
-#MY_STATIC_TARGET  :=
 MY_TARGETDIR := $(CMD_RELEASE_DIR)
 MY_SRCDIR :=  $(CMD_DIR)/bin
 
@@ -20,11 +19,6 @@ MY_SRCS := \
 	shell.js\
 	stat.js\
 	write.js\
-
-#MY_INCLUDES :=
-#MY_CFLAGS := 
-#MY_CPPFLAGS := 
-#MY_LINKSCRIPT := 
 
 include make/js_lib.mk
 
