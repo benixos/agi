@@ -1,13 +1,13 @@
 package message
 
 type Message struct {
-	Id	int		`json:"id"`
-	Session	string		`json:"session"`
-	Path	string		`json:"path"`
-	Data	string		`jon:"data"`
-
-//temp entries
-        Email    string `json:"email"`
-        Username string `json:"username"`
-        Message  string `json:"message"`
+    CloudEventsVersion 	string		`json:"cloudEventsVersion"`
+    EventType		string		`json:"eventType"`
+    EventTypeVersion 	string		`json:"eventTypeVersion"`
+    Source 		string		`json:"source"`
+    EventID 		string		`json:"eventID"`
+    EventTime 		string		`json:"eventTime"`
+    Extensions 		[]string 	`json:"extensions"`
+    ContentType 	string 		`json:"contentType"`
+    Data 		[]string	`json:"data"`
 }

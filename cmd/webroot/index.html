@@ -22,6 +22,12 @@
 		"usr/",
 		"var/"];
 
+	    var wsTest;
+
+	sendMessage = function(){
+	    wsTest.send("hello world!");
+	}	
+
 	main = function() {
 	    agi.root = new FileNode("/", writeFlags.CREATEDIR);
 	    agi.mount(0,"rootfs","/","");
@@ -33,6 +39,14 @@
 	    agi.write("/remote", writeFlags.CREATEDIR, "1", 0, 0);
 
 	    console.init();
+
+	    var homeSocket = 'ws://' + window.location.host + '/ws';
+	    var testId = 0;
+	    var key = 0;
+	    wsTest = new WebSocketConnection(homeSocket, testId, key, function(e) {
+            	var msg = JSON.parse(e.data);
+		console.printf(msg.eventType);
+            });
 	}  
   </script>
 </head>
@@ -40,6 +54,7 @@
   <nav class="light-blue lighten-1" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">AgI Console</a>
      <ul class="right hid-on-med-and-down" id="navMenu">
+	<li><input type="button" onclick="sendMessage()" value="Send Test Message" /></li>
      </ul>
    </div>
  </nav>
