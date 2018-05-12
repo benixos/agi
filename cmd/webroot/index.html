@@ -29,8 +29,7 @@
 	}	
 
 	main = function() {
-	    agi = new FileSystem();
-	    //agi.root = new FileNode("/", writeFlags.CREATEDIR);
+	    agi = AgI;
 	    agi.Mount(0,"rootfs","/","");
 	    agi.Write("/bin", writeFlags.CREATEDIR, "1", 0, 0);
 	    agi.Write("/local",writeFlags.CREATEDIR,"1", 0, 0);
