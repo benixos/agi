@@ -12,16 +12,10 @@ exec.main = function(arg)
     var path = "";
     var fileData=0;
 
-    buffer = agi.read(arg[1],0,0,0);
+    buffer = agi.Read(arg[1],0,0,0);
 
     if(buffer.Type === 2) {
-
 	eval(buffer.getData());
-
-        //var fileref=document.createElement('script')
-        //fileref.setAttribute("type","text/javascript")
-        //fileref.setAttribute("text", buffer.getData());
-
     }
     else
         console.printf("Not a Character File<br>");

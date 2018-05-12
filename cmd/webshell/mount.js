@@ -28,8 +28,7 @@ mount.main = function(arg)
         }        
         i++;   
     };
-    //console.printf("mount: "+fs+" at: "+mountPoint+"<br>");
-   //     console.printf(agi.mount(0,fs,mountPoint)+"<br>");
+
     agi.mount(0,this.fs,this.mountPoint);
 };
 

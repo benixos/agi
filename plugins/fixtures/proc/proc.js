@@ -54,7 +54,7 @@ var timefile = 0;
 var datefile = 0;
 var clockDir = 0;
 
-var procFS = new fileSystem();
+var procFS = new FileSystem();
 
 procFS.Name = "procfs"; //This is what the user mounts you as
 

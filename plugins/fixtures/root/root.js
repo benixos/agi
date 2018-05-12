@@ -8,7 +8,7 @@ var timefile = 0;
 var datefile = 0;
 var clockDir = 0;
 
-var rootFS = new fileSystem();
+var rootFS = new FileSystem();
 
 rootFS.Name = "rootfs"; //This is what the user mounts you as
 
@@ -45,17 +45,15 @@ x = 0;
 
     if(pathArray[pathArray.length-1] != "") {
     	newfile = new FileNode(pathArray[pathArray.length-1],fileTypes.Text);
-    	//newfile.putData(new Window(frame1,name,"fatty",0,0));
-    	newfile.addParent(agi.walk(destDir) );
-    	agi.walk(destDir).addChild(newfile);
+    	newfile.addParent(this.Walk(destDir) );
+    	this.Walk(destDir).addChild(newfile);
 
 	//callData(path, newfile);
 
     } else {
     	newfile = new FileNode(pathArray[pathArray.length - 2],fileTypes.Directory);
-    	//newfile.putData(new Window(frame1,name,"fatty",0,0));
-    	newfile.addParent(agi.walk(parentDir)) ;
-    	agi.walk(parentDir).addChild(newfile);
+    	newfile.addParent(this.Walk(parentDir)) ;
+    	this.Walk(parentDir).addChild(newfile);
     }
 
 };
@@ -68,9 +66,9 @@ rootFS.read = function(path,flags,offset,length) {
     if(flags == '0') {
         //simpleNode = new fileNode();
         if(path === "/date")
-            var simpleNode = this.walk("/date");
+            var simpleNode = this.Walk("/date");
         else if(path === "/time")
-            var simpleNode = this.walk("/time");
+            var simpleNode = this.Walk("/time");
         else if(path === "/" || path === "")
             var simpleNode = this.root;
         else
@@ -84,7 +82,7 @@ rootFS.read = function(path,flags,offset,length) {
             simpleNode.putData( now.getMonth()+"/"+now.getDate()+"/"+now.getFullYear());
         
         if(path === "/clock")
-            simpleNode.Parent = agi.walk("/local/dev");
+            simpleNode.Parent = this.Walk("/local/dev");
         
         return simpleNode;
     }
@@ -131,7 +129,7 @@ rootFS.init = function() {
 
 rootFS.onmount = function(mountPoint)
 {
-    agi.log("starting rootfs");
+    this.Log("starting rootfs");
     this.init();
 };
 

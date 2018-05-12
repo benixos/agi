@@ -9,7 +9,7 @@ mkdir.currentLine = "";
 
 mkdir.main = function(arg)
 {
-    agi.write(arg[1],1,1);
+    agi.Write(arg[1],1,1);
 
 };
 

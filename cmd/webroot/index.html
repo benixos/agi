@@ -8,7 +8,7 @@
   <script>
 	var cmdList = [];
 	var app_list = [];
-
+	var agi;
 	var rootfs_ini = [
 		"bin/",
 		"dev/",
@@ -29,14 +29,15 @@
 	}	
 
 	main = function() {
-	    agi.root = new FileNode("/", writeFlags.CREATEDIR);
-	    agi.mount(0,"rootfs","/","");
-	    agi.write("/bin", writeFlags.CREATEDIR, "1", 0, 0);
-	    agi.write("/local",writeFlags.CREATEDIR,"1", 0, 0);
-	    agi.write("/local/dev", writeFlags.CREATEDIR, "1", 0, 0);
-	    agi.mount(0,"stdout","/local/dev/stdout","");   
-	    agi.write("/local/dev/message", writeFlags.CREATEDIR, "1", 0, 0);
-	    agi.write("/remote", writeFlags.CREATEDIR, "1", 0, 0);
+	    agi = new FileSystem();
+	    //agi.root = new FileNode("/", writeFlags.CREATEDIR);
+	    agi.Mount(0,"rootfs","/","");
+	    agi.Write("/bin", writeFlags.CREATEDIR, "1", 0, 0);
+	    agi.Write("/local",writeFlags.CREATEDIR,"1", 0, 0);
+	    agi.Write("/local/dev", writeFlags.CREATEDIR, "1", 0, 0);
+	    agi.Mount(0,"stdout","/local/dev/stdout","");   
+	    agi.Write("/local/dev/message", writeFlags.CREATEDIR, "1", 0, 0);
+	    agi.Write("/remote", writeFlags.CREATEDIR, "1", 0, 0);
 
 	    console.init();
 

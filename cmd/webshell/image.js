@@ -9,7 +9,7 @@ image.currentLine = "";
 
 image.main = function(arg, line)
 {
-    buffer = agi.read(arg[1],0,0,0);
+    buffer = agi.Read(arg[1],0,0,0);
     //if(buffer.Type === fileTypes.Binary)
         console.printf("<img src=\"data:image/png;base64,"+buffer.Data+"\"/><br>");
     //else
@@ -18,8 +18,8 @@ image.main = function(arg, line)
 
 image.open = function(path)
 {
-    buffer = agi.read(path,0,0,0);
-    var winID = agi.write("/dev/win/new",2,"ImageViewer");
+    buffer = agi.Read(path,0,0,0);
+    var winID = agi.Write("/dev/win/new",2,"ImageViewer");
     var winView = document.getElementById(winID+"_mainView");
     if(buffer.Type === 3)
         winView.innerHTML = "<img src=\"data:image/png;base64,"+buffer.Data+"\"/><br>";

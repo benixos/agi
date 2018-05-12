@@ -11,7 +11,7 @@ var timefile = 0;
 var datefile = 0;
 var stdioDir = 0;
 
-var stdioFS = {};
+var stdioFS = new FileSystem();
 stdioFS.Name = "stdiofs"; //This is what the user mounts you as
 
  /*
@@ -44,7 +44,7 @@ stdioFS.read = function(path,flags,offset,length) {
             stdioNode.Data = now.getMonth()+"/"+now.getDate()+"/"+now.getFullYear();
         
         if(path === "/stdio")
-            stdioNode.Parent = agi.walk("/dev");
+            stdioNode.Parent = this.walk("/dev");
         
         return stdioNode;
     }

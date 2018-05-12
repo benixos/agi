@@ -12,7 +12,7 @@ cat.main = function(arg)
     var path = "";
     var fileData=0;
 
-    buffer = agi.read(arg[1],0,0,0);
+    buffer = agi.Read(arg[1],0,0,0);
 
     if(buffer.Type === 2)
         console.printf(buffer.data+"<br>");

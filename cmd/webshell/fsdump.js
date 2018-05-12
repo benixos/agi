@@ -14,10 +14,8 @@ fsdump.main = function(arg)
         if(arg === "")
             dumpNode = rootfs;
         else
-            dumpNode = agi.walk(arg[1]);
-    
-    
-    
+            dumpNode = agi.Walk(arg[1]);
+  
         console.printf(dumpNode+"<br>");
         console.printf("Name: "+dumpNode.Name+"<br>");
         console.printf("Type: "+dumpNode.Type+"<br>");

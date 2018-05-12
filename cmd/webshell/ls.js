@@ -15,7 +15,7 @@ ls.main = function(arg)
         return;
     }
 
-    buffer = agi.read(arg[1],0,0,0);
+    buffer = agi.Read(arg[1],0,0,0);
     
     var count = 0;
 

@@ -24,6 +24,4 @@ MY_CFLAGS :=
 MY_CPPFLAGS := 
 MY_LINKSCRIPT := 
 
-#include make/js_lib.mk
-
 endif

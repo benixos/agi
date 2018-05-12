@@ -25,7 +25,7 @@ console.init = function()
     var count = 0;
 
     while(count < cmdList.length-1) {
-        agi.write("/bin/"+cmdList[count].appName,5,cmdList[count]);   
+        agi.Write("/bin/"+cmdList[count].appName,5,cmdList[count]);   
         count++;
     }
     
@@ -38,11 +38,7 @@ console.init = function()
         }
          else
              count++;
-    }   
-    //buffer = agi.read("/bin/shell",0,0,0);
-    //buffer.Data        
-    //console.printf(buffer);
-    
+    }     
 };
 
 console.input = function(keyCode)

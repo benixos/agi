@@ -590,7 +590,7 @@ winConfig.mode = "Desktop";
 winConfig.ScreenWidth = 0;
 winConfig.ScreenHeight = 0;
 
-var screenFS = new fileSystem();
+var screenFS = new FileSystem();
 screenFS.Name = "screenfs"; //This is what the user mounts you as
 screenFS.winList = [];
 

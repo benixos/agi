@@ -11,7 +11,7 @@ var bufferfile = 0;
 var ctlfile = 0;
 var stdoutDir = 0;
 
-var stdoutFS = {};
+var stdoutFS = new FileSystem();
 stdoutFS.Name = "stdout"; //This is what the user mounts you as
 
  /*
@@ -43,7 +43,7 @@ stdoutFS.read = function(path,flags,offset,length) {
             break;
         case "/stdout":
             if(flags == '0') {
-                this.stdoutDir.Parent = agi.walk("/dev");
+                this.stdoutDir.Parent = this.walk("/dev");
                 return stdoutDir;
             }
             if(flags == '1')
@@ -94,7 +94,7 @@ stdoutDir.data[1] = ctlfile;
 
 stdoutFS.onmount = function(mountPoint)
 {
-    agi.log("starting rootfs");
+    this.Log("starting rootfs");
     this.init();
 };
 
